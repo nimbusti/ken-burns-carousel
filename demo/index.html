@@ -63,6 +63,15 @@
         ken-burns-carousel, pre {
             box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
         }
+
+        .filter-1 {
+            filter: sepia(.5) hue-rotate(-30deg) saturate(1.4);
+        }
+
+        .filter-2 {
+            filter: grayscale(100%);
+        }
+
     </style>
 </head>
 <body>
@@ -81,7 +90,7 @@
     </p>
     <div class="example">
         <div class="demo">
-            <ken-burns-carousel id="demo1"></ken-burns-carousel>
+            <ken-burns-carousel id="demo1" fade-duration="3000" slide-duration="5000"></ken-burns-carousel>
         </div>
 
         <pre><code class="html">&lt;ken-burns-carousel
@@ -97,17 +106,15 @@
     <p>The slide and fade durations can be easily modified using HTML attributes.</p>
     <div class="example">
         <div class="demo">
-            <ken-burns-carousel id="demo2" fade-duration="2000" slide-duration="5000"></ken-burns-carousel>
+            <ken-burns-carousel id="demo2" fade-duration="15000" slide-duration="5000"></ken-burns-carousel>
         </div>
 
         <pre><code class="html">&lt;ken-burns-carousel
     fade-duration="1000"
     slide-duration="5000"
-    images=&quot;https://source.unsplash.com/Qh9Swf_8DyA
-        https://source.unsplash.com/O453M2Liufs
-        https://source.unsplash.com/1OtUkD_8svc
-        https://source.unsplash.com/gIgciC_WKnY
-        https://source.unsplash.com/LCguCXU3Ffk&quot;&gt;
+    images=&quot;https://c402277.ssl.cf1.rackcdn.com/photos/946/images/story_full_width/forests-why-matter_63516847.jpg?1345534028
+        https://upload.wikimedia.org/wikipedia/commons/thumb/2/2f/Brazilian_amazon_rainforest.jpg/1200px-Brazilian_amazon_rainforest.jpg
+        https://3c1703fe8d.site.internapcdn.net/newman/gfx/news/2018/europeslostf.jpg&quot;&gt;
 &lt;/ken-burns-carousel&gt;</code></pre>
     </div>
 
@@ -118,7 +125,7 @@
     </p>
     <div class="example">
         <div class="demo">
-            <ken-burns-carousel id="demo3" fade-duration="2000" slide-duration="5000" animation-direction="normal"></ken-burns-carousel>
+            <ken-burns-carousel id="demo3" fade-duration="2000" slide-duration="5000" animation-direction="normal" ></ken-burns-carousel>
         </div>
 
         <pre><code class="html">&lt;ken-burns-carousel
@@ -191,21 +198,24 @@
 
     window.addEventListener('WebComponentsReady', function(e) {
         const kenBurnsCarousel = document.createElement('script');
-        kenBurnsCarousel.src = 'ken-burns-carousel.min.js';
+        kenBurnsCarousel.src = '../dist/ken-burns-carousel.min.js';
         document.head.appendChild(kenBurnsCarousel);
 
         kenBurnsCarousel.onload = () => {
             // Feed demo with sample images
             const sampleImages = [
-                'https://source.unsplash.com/Qh9Swf_8DyA',
-                'https://source.unsplash.com/O453M2Liufs',
-                'https://source.unsplash.com/1OtUkD_8svc',
-                'https://source.unsplash.com/gIgciC_WKnY',
-                'https://source.unsplash.com/LCguCXU3Ffk',
+                'https://3c1703fe8d.site.internapcdn.net/newman/gfx/news/2018/europeslostf.jpg'
+                //'https://c402277.ssl.cf1.rackcdn.com/photos/946/images/story_full_width/forests-why-matter_63516847.jpg?1345534028'
+            ];
+
+            const sampleFilters = [
+                'filter-1977'
+                //'filter-inkwell',
             ];
 
             for (const demo of Array.from(document.getElementsByTagName('ken-burns-carousel'))) {
                 demo.images = sampleImages;
+                demo.filters = sampleFilters;
             }
         }
     });
